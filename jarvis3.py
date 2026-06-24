@@ -944,6 +944,25 @@ def jarvis_loop():
                     app.after(0, open_camera)
 
                     print("After app.after")
+
+
+            elif "open youtube" in command:
+                    speak("Opening YouTube")
+                    webbrowser.open("https://youtube.com")
+
+            elif "open gmail" in command:
+                    speak("Opening Gmail")
+                    webbrowser.open("https://mail.google.com")
+
+            elif "open google" in command:
+                    speak("Opening Google")
+                    webbrowser.open("https://google.com")
+
+            elif "open spotify" in command:
+
+                    speak("Opening Spotify")
+
+                    os.system("start spotify")
             elif "open" in command:
 
                     app_name = command.replace("open", "").strip()
@@ -1528,6 +1547,36 @@ Summarize the following PDF in short bullet points:
                             if not success:
 
                              speak("Spotify is not open")
+
+            elif "send email" in command:
+
+                    speak("Who should I send the email to?")
+
+                    receiver = listen()
+
+                    speak("What is the subject?")
+
+                    subject = listen()
+
+                    speak("What should I write?")
+
+                    body = listen()
+
+                    try:
+
+                            send_email(
+            receiver,
+            subject,
+            body
+        )
+
+                            speak("Email sent successfully")
+
+                    except Exception as e:
+
+                            print(e)
+
+                            speak("Sorry, I could not send the email")
             else:
                     thinking_mode()
 
